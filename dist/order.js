@@ -20,7 +20,7 @@ class Order {
         this.status = newStatus;
     }
     getOrderInfo() {
-        return `ID заказа: ${this.id}, cтатус: ${this.status}, итоговая сумма: ${this.total}`;
+        return `ID заказа: ${this.id}, cтатус: ${this.status}, итоговая сумма: ${this.total} ₽`;
     }
 }
 exports.Order = Order;

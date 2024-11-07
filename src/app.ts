@@ -13,7 +13,7 @@ productManager.fetchProducts("https://raw.githubusercontent.com/DmitryKryukov/re
         cart.addProduct(productManager.getProductById(2));
         
         console.log(`Товары в корзине: ${cart.getCartProducts()}`);
-        console.log(`Общая стоимость корзины: ${cart.calculateTotal()}`);
+        console.log(`Общая стоимость корзины: ${cart.calculateTotal()} ₽`);
 
         const order = orderManager.createOrder(cart.getCartProducts(), cart.calculateTotal());
         console.log(`Новый заказ: ${order.getOrderInfo()}`);

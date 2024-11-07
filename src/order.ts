@@ -29,7 +29,7 @@ class Order implements IOrder {
     }
 
     getOrderInfo(): string {
-        return `ID заказа: ${this.id}, cтатус: ${this.status}, итоговая сумма: ${this.total}`;
+        return `ID заказа: ${this.id}, cтатус: ${this.status}, итоговая сумма: ${this.total} ₽`;
     }
 }
 
