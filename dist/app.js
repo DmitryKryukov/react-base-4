@@ -8,6 +8,7 @@ const orderManager = new order_1.OrderManager();
 const cart = new cart_1.Cart();
 productManager.fetchProducts("https://raw.githubusercontent.com/DmitryKryukov/react-base-4/refs/heads/main/products.json")
     .then(() => {
+    console.log("Доступные товары:");
     productManager.listProducts();
     cart.addProduct(productManager.getProductById(1));
     cart.addProduct(productManager.getProductById(2));

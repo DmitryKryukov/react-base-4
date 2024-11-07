@@ -1,4 +1,4 @@
-import { Product, ProductManager } from "./product";
+import { ProductManager } from "./product";
 import { Cart } from "./cart";
 import { OrderManager, OrderStatus } from "./order";
 
@@ -8,6 +8,7 @@ const cart = new Cart();
 
 productManager.fetchProducts("https://raw.githubusercontent.com/DmitryKryukov/react-base-4/refs/heads/main/products.json")
     .then(() => {
+        console.log("Доступные товары:");
         productManager.listProducts();
         cart.addProduct(productManager.getProductById(1));
         cart.addProduct(productManager.getProductById(2));
