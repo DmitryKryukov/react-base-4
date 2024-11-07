@@ -1,17 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cart = void 0;
+const product_1 = require("./product");
 class Cart {
     constructor() {
         this.products = [];
     }
     addProduct(product) {
-        const existingProduct = this.products.find(productInProducts => productInProducts.id === product.id);
-        if (!existingProduct) {
-            this.products.push(product);
+        if (product instanceof product_1.Product) {
+            const existingProduct = this.products.find(productInProducts => productInProducts.id === product.id);
+            if (!existingProduct) {
+                this.products.push(product);
+            }
+            else {
+                console.log(`Товар с ID ${product.id} уже в корзине`);
+            }
         }
         else {
-            console.log(`Товар с ID ${product.id} уже в корзине`);
+            console.warn(`Попытка добавление невалидного товара или undefined`);
         }
     }
     removeProduct(productId) {

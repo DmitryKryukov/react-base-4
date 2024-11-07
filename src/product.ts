@@ -50,14 +50,13 @@ class ProductManager implements IProductManager {
         return this.products;
     }
 
-    getProductById(productId: number): IProduct | undefined {
+    getProductById(productId: number): IProduct | undefined{
         return this.products.find(product => product.id === productId);
     }
 
     listProducts(): void {
-        console.log(`Доступные товары:`);
         this.products.forEach(product => {
-            console.log(`ID: ${product.id}, название: ${product.name}, стоимость: ${product.price}`);
+            console.log(`${product.id}, ${product.name}, ${product.price} ₽`);
         });
     }
 }

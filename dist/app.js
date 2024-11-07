@@ -6,27 +6,19 @@ const order_1 = require("./order");
 const productManager = new product_1.ProductManager();
 const orderManager = new order_1.OrderManager();
 const cart = new cart_1.Cart();
-productManager.fetchProducts("./products.json");
-productManager.listProducts();
-/*
-// Просмотр товаров в магазине
-console.log("Доступные товары:", productManager.getAllProducts());
-
-// Добавляем товары в корзину
-cart.addProduct(product1);
-cart.addProduct(product2);
-
-// Проверяем содержимое корзины и общую стоимость
-console.log("Товары в корзине:", cart.getCartItems());
-console.log("Общая стоимость корзины:", cart.calculateTotal());
-
-// Создаем заказ на основе содержимого корзины
-const order = orderManager.createOrder(cart.getCartItems(), cart.calculateTotal());
-console.log("Новый заказ:", order.getOrderInfo());
-
-// Изменяем статус заказа
-order.changeStatus(OrderStatus.Confirmed);
-console.log("Обновленный заказ:", order.getOrderInfo());
-
-// Просмотр всех заказов
-console.log("Все заказы:", orderManager.getAllOrders());*/ 
+productManager.fetchProducts("https://raw.githubusercontent.com/DmitryKryukov/react-base-4/refs/heads/main/products.json")
+    .then(() => {
+    productManager.listProducts();
+    cart.addProduct(productManager.getProductById(1));
+    cart.addProduct(productManager.getProductById(2));
+    console.log(`Товары в корзине: ${cart.getCartProducts()}`);
+    console.log(`Общая стоимость корзины: ${cart.calculateTotal()}`);
+    const order = orderManager.createOrder(cart.getCartProducts(), cart.calculateTotal());
+    console.log(`Новый заказ: ${order.getOrderInfo()}`);
+    order.changeStatus(order_1.OrderStatus.Confirmed);
+    console.log(`Обновлённый заказ: ${order.getOrderInfo()}`);
+    console.log(`Все заказы: ${orderManager.getAllOrders()}`);
+})
+    .catch(error => {
+    console.error('Ошибка получения товаров:', error);
+});

@@ -1,4 +1,4 @@
-import { IProduct } from "./product";
+import { IProduct, Product } from "./product";
 
 interface ICart {
     addProduct(product: IProduct): void;
@@ -12,12 +12,17 @@ interface ICart {
 class Cart implements ICart {
     private products: IProduct[] = [];
 
-    addProduct(product: IProduct): void {
-        const existingProduct = this.products.find(productInProducts => productInProducts.id === product.id);
-        if (!existingProduct) {
-            this.products.push(product);
-        } else {
-            console.log(`Товар с ID ${product.id} уже в корзине`);
+    addProduct(product: IProduct | undefined): void {
+        if (product instanceof Product) {
+            const existingProduct = this.products.find(productInProducts => productInProducts.id === product.id);
+            if (!existingProduct) {
+                this.products.push(product);
+            } else {
+                console.log(`Товар с ID ${product.id} уже в корзине`);
+            }
+        }
+        else {
+            console.warn(`Попытка добавление невалидного товара или undefined`);
         }
     }
 

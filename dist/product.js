@@ -40,9 +40,8 @@ class ProductManager {
         return this.products.find(product => product.id === productId);
     }
     listProducts() {
-        console.log(`Доступные товары:`);
         this.products.forEach(product => {
-            console.log(`ID: ${product.id}, название: ${product.name}, стоимость: ${product.price}`);
+            console.log(`${product.id}, ${product.name}, ${product.price} ₽`);
         });
     }
 }
