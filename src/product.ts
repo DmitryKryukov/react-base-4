@@ -42,7 +42,7 @@ class ProductManager implements IProductManager {
         this.products.push(product);
     }
 
-    removeProduct(productId: number) {
+    removeProduct(productId: number): void {
         this.products = this.products.filter(product => product.id !== productId);
     }
 
